@@ -1,0 +1,28 @@
+treechildren::-moz-tree-checkbox {
+  /* unchecked checkbox treecells. This style MUST come before treechildren::-moz-tree-checkbox(checked) otherwise it won't take effect. */
+  list-style-image: url("")
+}
+treechildren::-moz-tree-checkbox(checked) {
+  /* checked checkbox treecells. cbox-check.gif isn't available in
+     Firefox 1, 2, and 3 in Mac OS X so you should specify a URL to an image
+     in your extension or elsewhere. */
+  list-style-image: url("chrome://global/skin/checkbox/cbox-check.gif");
+}
+treechildren::-moz-tree-checkbox(disabled) {
+  /* disabled checkbox treecells. cbox-check-dis.gif isn't available in
+     Firefox 1, 2, and 3 in Mac OS X, so you should specify a URL to an image
+     in your extension or elsewhere. */
+  list-style-image: url("chrome://global/skin/checkbox/cbox-check-dis.gif")
+}
+
+treechildren::-moz-tree-row(selected)  { background-color: #FFFFAA; }
+treechildren::-moz-tree-row(odd)  { background-color: #EEEEEE; }
+treechildren::-moz-tree-row(odd, selected)  { background-color: #FFFFAA; }
+treechildren::-moz-tree-cell-text(selected)  { color: #000000; }
+treechildren::-moz-tree-cell-text(odd, selected) { color: #000000; }
+treechildren::-moz-tree-cell(selected)  { background-color: #FFFFAA;}
+treechildren::-moz-tree-row(hover)  {background-color: #FFFFAA !important;}
+
+treechildren:-moz-tree-column {
+  border-right:1px solid rgb(220,220,220) !important;
+}

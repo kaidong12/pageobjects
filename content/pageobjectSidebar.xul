@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://pageobjects/skin/PageObjectSidebar.css" type"text/css" ?>
+<!DOCTYPE page SYSTEM "chrome://pageobjects/locale/pageobjects.dtd">
+
+<sidebar id="sbObjectSidebar" title="&objectsidebar.title;"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" >
+
+	<script src="chrome://pageobjects/content/pageobjectSidebar.js" type="application/javascript"/>
+	<script src="chrome://pageobjects/content/sqlite3connector.js" type="application/javascript"/>
+	<script src="chrome://pageobjects/content/optionsDialog.js" type="application/javascript"/>
+	<script src="chrome://pageobjects/content/export.js" type="application/javascript"/>
+	<script src="chrome://pageobjects/content/file-utils.js" type="application/javascript"/>
+
+	<commandset id="pageobjectsCommand">
+		<command id="cmd_export_po" oncommand="Export.exportAsPageObjects()"/>
+		<command id="cmd_export_ss" oncommand="Export.exportAsStrings()"/>
+		<command id="cmd_export_pp" oncommand="Export.exportAsProperties()"/>
+	</commandset>
+
+	<vbox flex="1">
+		<toolbox>
+			<toolbar>
+				<toolbarbutton id="btnLoad" label="Load" image="download.gif" oncommand="pageobjectSidebar.init();"/>
+				<toolbarbutton id="btnDelete" label="Delete" image="delete.gif" disabled="true" oncommand="pageobjectSidebar.deleteSelected();"/>
+				<toolbarbutton id="btnExpand" label="Expand" image="maximize.gif" disabled="true" oncommand="pageobjectSidebar.toggleContainer();"/>
+				<toolbarbutton id="btnOptions" label="Options" image="settings.png" oncommand="pageobjectSidebar.openOptions();"/>
+				<toolbarbutton id="btnExport" type="menu-button" image="check.gif" orient="horizontal" label="Export">
+					<menupopup>
+						<menuitem label="As Page Objects" command="cmd_export_po" key="save-key" accesskey="O"/>
+						<menuitem label="As Strings" command="cmd_export_ss" key="open-key" accesskey="S"/>
+						<menuitem label="As Properties" command="cmd_export_pp" key="open-key" accesskey="P"/>
+					</menupopup>
+				</toolbarbutton>
+			</toolbar>
+		</toolbox>
+
+		<tree id="elementList" flex="1" hidecolumnpicker="false" seltype="cell" editable="true" onselect="pageobjectSidebar.onTreeSelected()" onclick="pageobjectSidebar.onTreeClicked(event)" class="tree"
+			rows="5">
+			<treecols id="myTree-treeCols">
+				<treecol id="myTree-Co0-id" label="ID" hidden="true" ordinal="1"/>
+				<splitter class="tree-splitter"/>
+				<treecol id="myTree-Co1-key" label="Key" primary="true" crop="end" flex="1" ordinal="2"/>
+				<splitter class="tree-splitter"/>
+				<treecol id="myTree-Co2-locator" label="Locator"  crop="end" flex="1" ordinal="3"/>
+				<splitter class="tree-splitter"/>
+				<treecol id="myTree-Co3-parent" label="Parent" hidden="true" ordinal="4"/>
+				<treecol id="myTree-Co4-level" label="Level" hidden="true" ordinal="5"/>
+				<treecol id="myTree-Co5-index" label="Index" hidden="true" ordinal="6"/>
+				<treecol id="myTree-Co6-type" label="Type" hidden="true" ordinal="7"/>
+			</treecols>
+			<treechildren/>
+		</tree>
+
+	</vbox>
+
+</sidebar>

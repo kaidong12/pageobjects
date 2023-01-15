@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+	xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+	<Description about="urn:mozilla:install-manifest">
+		<em:id>page-objects-generator@kaidong.yan.com</em:id>
+		<em:version>0.1.0</em:version>
+    
+		<!-- Firefox -->
+		<em:targetApplication>
+			<Description>
+				<em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+				<em:minVersion>18.0</em:minVersion>
+				<em:maxVersion>28.0</em:maxVersion>
+			</Description>
+		</em:targetApplication>
+    
+		<em:name>Page Objects Generator</em:name>
+		<em:description>
+		This plugin is for Web UI Automation testing. It mainly provides 3 features: 
+1, capture and store locators of web element into a embedded database(based on Firepath 0.9.7);
+2, display locators in the sidebar to facilitate editing;
+3, convert locators in database into Page Objects in a Java file. 
+Any issue or suggestion please email to kaidong.yan@gmail.com </em:description>    
+		<em:creator>Lance Yan</em:creator>
+		<em:contributor>Pierre Tholence</em:contributor>
+		<em:contributor>David Rees</em:contributor>
+		<em:iconURL>chrome://pageobjects/content/pageobjects.png</em:iconURL>
+		<em:type>2</em:type>
+	</Description>
+</RDF>

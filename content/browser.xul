@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!DOCTYPE window SYSTEM "chrome://pageobjects/locale/pageobjects.dtd">
+<window id="sample" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	
+	<script src="chrome://pageobjects/content/pageobjectSidebar.js" type="application/javascript"/>
+	<script src="chrome://pageobjects/content/browser.js" type="application/javascript"/>
+	<script src="chrome://pageobjects/content/sqlite3connector.js" type="application/javascript"/>
+
+	<!--
+		<menupopup id="menu_ToolsPopup"> 
+			<menuitem id="run-pageobjects" label="&objectsidebar.title;" key="pageobjects-run-key" command="viewObjectSidebar"/> 
+		</menupopup>
+
+		<keyset>
+			<key id="pageobjects-run-key" modifiers="accel shift" key="o" command="viewObjectSidebar"/>
+		</keyset>
+
+		<popup id="contentAreaContextMenu">
+			<menuitem id="browser-test" label="testtest" insertbefore="menu_firebugInspect" oncommand="WebPanel.test()"/>
+		</popup>
+		-->
+	
+	<keyset id="mainKeyset">
+		<key id="key_openPageObjectSidebar" command="viewObjectSidebar"	key="&openObjectSidebar.commandkey;" modifiers="&openObjectSidebar.modifierskey;" />
+	</keyset>
+	
+	<menupopup id="viewSidebarMenu">
+		<menuitem label="&objectsidebar.title;" key="key_openPageObjectSidebar" observes="viewObjectSidebar" />
+	</menupopup>
+  	
+	<menupopup id="menu_ToolsPopup"> 
+		<menuitem id="run-pageobjects" label="&objectsidebar.title;" key="pageobjects-run-key" command="viewObjectSidebar"/> 
+	</menupopup>
+	
+	<popup id="contentAreaContextMenu">
+		<menuitem id="pageobjects-open-sidebar" label="&objectsidebar.contextmenu;" insertbefore="menu_firebugInspect" command="viewObjectSidebar"/>
+	</popup>
+	
+	<broadcasterset id="mainBroadcasterSet"> 
+		<broadcaster id="viewObjectSidebar"
+			autoCheck="false"
+			type="checkbox"
+			group="sidebar"
+			sidebarurl="chrome://pageobjects/content/pageobjectSidebar.xul"
+			sidebartitle="&objectsidebar.title;"
+			oncommand="toggleSidebar('viewObjectSidebar');" />
+	</broadcasterset>
+	
+</window >

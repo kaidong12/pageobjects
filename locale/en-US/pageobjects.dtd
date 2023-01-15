@@ -1,0 +1,19 @@
+<!ENTITY FirePath.context.show.label "Inspect in FirePath">
+<!ENTITY FirePath.context.show.key "w">
+<!ENTITY FirePath.xPath.label "XPath:">
+<!ENTITY FirePath.xPath.key "x">
+<!ENTITY FirePath.context.label "Parent: ">
+<!ENTITY FirePath.context.key "t">
+<!ENTITY FirePath.showdom.button "Show Entire DOM">
+<!ENTITY FirePath.find.button "Find">
+<!ENTITY FirePath.find.key "f">
+<!ENTITY FirePath.add.button "Add">
+<!ENTITY FirePath.add.key "a">
+<!ENTITY FirePath.CSS.label "CSS:">
+<!ENTITY FirePath.CSS.key "c">
+<!ENTITY FirePath.Sizzle.label "Sizzle:">
+<!ENTITY FirePath.Sizzle.key "s">
+<!ENTITY objectsidebar.title "Page Objects">
+<!ENTITY objectsidebar.contextmenu "Page Objects Sidebar">
+<!ENTITY openObjectSidebar.commandkey "o">
+<!ENTITY openObjectSidebar.modifierskey "shift accel">

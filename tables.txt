@@ -1,0 +1,16 @@
+CREATE TABLE IF NOT EXISTS elements(id INTEGER PRIMARY KEY AUTOINCREMENT, key TEXT NOT NULL, locator TEXT, parent INTEGER NOT NULL, level INTEGER NOT NULL, lindex INTEGER NOT NULL, type INTEGER NOT NULL);
+
+INSERT INTO elements(key, locator, parent, level, lindex, type) VALUES(:key, :locator, :parent, :level, :index, :type);
+
+SELECT id, key, locator, parent, level, lindex, type FROM elements ORDER BY parent, type, id;
+
+SELECT id FROM elements WHERE parent=:parent;
+
+SELECT parent FROM elements WHERE id=:id;
+
+SELECT key FROM elements WHERE id=:id;
+
+UPDATE elements SET key=:key, locator=:locator WHERE id=:locatorId;
+
+DELETE FROM elements WHERE id=:locatorId;
+

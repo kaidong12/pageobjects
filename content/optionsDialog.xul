@@ -1,0 +1,179 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<?xml-stylesheet href="chrome://pageobjects/skin/optionsDialog.css" type"text/css" ?>
+<!--
+Copyright 2005 Shinya Kasatani
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+	 http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<!DOCTYPE window [
+	<!ENTITY % browserDTD SYSTEM "chrome://browser/locale/browser.dtd">
+	%browserDTD;
+	<!ENTITY % optionsDTD SYSTEM "chrome://pageobjects/locale/options.dtd">
+	%optionsDTD;
+	]>
+<dialog buttons="accept,cancel,extra2"	buttonlabelextra2="&options.resetOptions;"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	id="page-objects-options"
+	ondialogaccept="return Option.saveSet();"
+	ondialogextra2="Option.loadDefaultSet();"
+	onload="Option.loadSet();"
+	title="&options.title;"
+	width="500"
+	height="450"
+	>
+	
+	<script src="chrome://pageobjects/content/preferences.js" type="application/javascript"/>
+	<script src="chrome://pageobjects/content/optionsDialog.js" type="application/javascript"/>
+	<script src="chrome://pageobjects/content/plugin.js" type="application/javascript"/> 
+ 
+	<!--
+		  <script type="application/x-javascript" src="chrome://selenium-ide/content/xhtml-entities.js"/>
+		  <script type="application/x-javascript" src="chrome://selenium-ide/content/dndReorderedListbox.js"/>
+		  <script type="application/x-javascript" src="chrome://selenium-ide/content/selenium-ide-loader.js"/>
+		  <script type="application/x-javascript" src="chrome://selenium-ide/content/testCase.js"/>
+		  <script type="application/x-javascript" src="chrome://selenium-ide/content/file-utils.js"/>
+		  <script type="application/x-javascript" src="chrome://selenium-ide/content/format.js"/>
+		  <stringbundle id="strings" src="chrome://selenium-ide/locale/selenium-ide.properties"/>
+-->
+
+	<tabbox id="optionsTabbox" flex="1">
+		<tabs id="optionsTabs" orient="horizontal">
+			<tab label="&options.general.label;"/>
+			<tab label="&options.formats.label;"/>
+			<tab label="WebDriver"/>
+		</tabs>
+		
+		<tabpanels id="general" flex="1">
+			<tabpanel id="generalTab" orient="vertical">
+				<description>&options.encoding.description;</description>
+				
+				<groupbox>
+					<caption label="Default database folder"/>
+					<radiogroup id="po_load_path">
+						<radio label="Desktop" value="Desk" oncommand="Option.enableBrowse1();"/>
+						<radio label="Profile" value="ProfD" oncommand="Option.enableBrowse1();"/>
+						<radio label="Temp" value="TmpD" oncommand="Option.enableBrowse1();"/>
+						<hbox align="center">
+							<radio label="User Folder" value="userdir1" oncommand="Option.enableBrowse1();"/>
+							<textbox id="udir1" multiline="false" disabled="true" flex="1" />
+							<button id="browse1" label="&options.browse;" disabled="true" oncommand="Option.selectFolder('udir1');"/>
+						</hbox>
+					</radiogroup>
+				</groupbox>
+				
+				<separator class="thin"/>
+				<groupbox>
+					<caption label="Default export folder"/>
+					<radiogroup id="po_export_path">
+						<radio label="Desktop" value="Desk" oncommand="Option.enableBrowse2();"/>
+						<radio label="Profile" value="ProfD" oncommand="Option.enableBrowse2();"/>
+						<radio label="Temp" value="TmpD" oncommand="Option.enableBrowse2();"/>
+						<hbox align="center">
+							<radio label="User Folder" value="userdir2" oncommand="Option.enableBrowse2();"/>
+							<textbox id="udir2" multiline="false" disabled="true" flex="1" />
+							<button id="browse2" label="&options.browse;" disabled="true" oncommand="Option.selectFolder('udir2');"/>
+						</hbox>
+					</radiogroup>
+				</groupbox>
+				
+				<separator class="thin"/>
+				<hbox>
+					<button label="Apply" oncommand="Option.saveSet();"/>
+				</hbox>
+				
+			</tabpanel>
+
+			<tabpanel id="formats" orient="vertical">
+				<hbox flex="1">
+					<listbox id="format-list" onselect="Option.showVbox()" width="100">
+						<listitem label="Page Objects" value="po"/>
+						<listitem label="Strings" value="ss"/>
+						<listitem label="Properties" value="pp"/>
+					</listbox>
+					
+					<vbox flex="1" id="pageobjects" width="300" hidden="false">
+						<description id="format-name">Page Objects</description>
+						<groupbox>
+							<caption label="Header"/>
+							<hbox align="center">
+								<textbox id="po_header" height="100" multiline="true" flex="1"/>
+							</hbox>
+						</groupbox>
+						
+						<separator class="thin"/>
+						<groupbox>
+							<caption label="Footer"/>
+							<hbox align="center">
+								<textbox id="po_footer" height="100" multiline="true" flex="1"/>
+							</hbox>
+						</groupbox>
+					</vbox>
+					
+					<vbox flex="1" id="strings" width="300" hidden="true">
+						<description id="format-name">Strings</description>
+						<groupbox>
+							<caption label="Header"/>
+							<hbox align="center" >
+								<textbox id="ss_header" height="100" multiline="true" flex="1"/>						
+							</hbox>
+						</groupbox>
+						
+						<separator class="thin"/>
+						<groupbox>
+							<caption label="Footer"/>
+							<hbox align="center">
+								<textbox id="ss_footer" height="100" multiline="true" flex="1"/>						
+							</hbox>
+						</groupbox>
+					</vbox>
+					
+					<vbox flex="1" id="properties" width="300" hidden="true">
+						<description id="format-name">Properties</description>
+						<groupbox>
+							<caption label="Header"/>
+							<hbox align="center">					
+								<textbox id="pp_header" height="100" multiline="true" flex="1"/>						
+							</hbox>
+						</groupbox>
+						
+						<separator class="thin"/>
+						<groupbox>
+							<caption label="Footer"/>
+							<hbox align="center">
+								<textbox id="pp_footer" height="100" multiline="true" flex="1"/>						
+							</hbox>
+						</groupbox>
+					</vbox>
+					
+				</hbox>
+				
+			</tabpanel>
+			
+			<tabpanel orient="vertical" id="webDriverPanel">
+				<description class="tip"></description>
+				<checkbox id="executeUsingWebDriver" label="Enable WebDriver Playback"/>
+				<description class="tip">Changes to this option will be applied after an Selenium IDE restart</description>
+				<description class="tip">WebDriver playback is still an experimental feature and may not be very stable. Please use it for testing Selenium IDE to provide us feedback.</description>
+				<hbox>
+					<textbox id="webDriverBrowserString" multiline="false" flex="1"/>
+				</hbox>
+				<description class="tip">Browser choices: android, chrome, firefox, htmlunit, internet explorer, iPhone, iPad, opera</description>
+				<label class="text-link" href="http://blog.reallysimplethoughts.com/?p=561" value="How to use WebDriver playback?" />
+			</tabpanel>
+			
+		</tabpanels>
+		
+	</tabbox>
+	
+</dialog>

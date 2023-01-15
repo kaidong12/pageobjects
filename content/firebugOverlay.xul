@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE overlay SYSTEM "chrome://pageobjects/locale/pageobjects.dtd">
+<?xml-stylesheet href="chrome://pageobjects/skin/pageobjects.css" type="text/css"?>
+
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	
+	<script src="chrome://pageobjects/content/FirePathPanel.js" type="application/javascript"/>
+	<script src="chrome://pageobjects/content/sqlite3connector.js" type="application/javascript"/>
+	<script src="chrome://pageobjects/content/browser.js" type="application/javascript"/>
+	<script src="chrome://pageobjects/content/optionsDialog.js" type="application/javascript"/>
+
+	<stringbundleset id="stringbundleset">
+		<stringbundle id="Firepath_strings" src="chrome://pageobjects/locale/pageobjects.properties"/>
+	</stringbundleset>
+	
+	<popup id="contentAreaContextMenu">
+		<menuitem id="menu_show_firepath" label="&FirePath.context.show.label;"
+			insertbefore="menu_firebugInspect"
+			oncommand="Firebug.toggleBar(true); Firebug.chrome.selectPanel('firepath').updateSelection(document.popupNode)"
+			accesskey="&FirePath.context.show.key;"/>
+	</popup>
+	
+	<hbox id="fbToolbarInner">
+		<!--
+			<toolbarbutton id="FirePathBarHighlightButton" collapsed="true" label="&FirePath.highlight.button;" class="toolbar-text-button"
+				oncommand="Firebug.FirePathPanel.ResultHighlightModule.toggleHighlight();"
+				checked="false" disabled="true" accesskey="h" insertafter="fbLocationList"/>
+				-->
+		<toolbarbutton id="FirePathBarShowDOMButton" collapsed="true" label="&FirePath.showdom.button;" class="toolbar-text-button"
+			oncommand="Firebug.FirePathPanel.ResultDisplaySettingModule.toggleShowDOM();"
+			checked="true" disabled="true" accesskey="s" insertafter="fbLocationList"/>
+		<firepathbar id="FirePathBar" flex="1"  collapsed="true" insertafter="fbLocationList"/>
+	</hbox>
+	
+	<vbox id="fbContentBox">
+		<firepathstatusbar id="FirePathStatusBar" insertafter="fbCommandBox" collapsed="true"/>
+	</vbox>
+	
+</overlay>
